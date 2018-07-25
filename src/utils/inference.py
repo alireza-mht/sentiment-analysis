@@ -4,6 +4,7 @@ import numpy as np
 from keras.preprocessing import image
 
 def load_image(image_path, grayscale=False, target_size=None):
+
     pil_image = image.load_img(image_path, grayscale, target_size)
     return image.img_to_array(pil_image)
 
@@ -28,7 +29,7 @@ def draw_text(coordinates, image_array, text, color, x_offset=0, y_offset=0,
     x, y = coordinates[:2]
     cv2.putText(image_array, text, (x + x_offset, y + y_offset),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                font_scale, color, thickness, cv2.LINE_AA)
+                font_scale, color, thickness, 16)
 
 def get_colors(num_classes):
     colors = plt.cm.hsv(np.linspace(0, 1, num_classes)).tolist()
